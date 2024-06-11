@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/Sequelize");
+const Book = require("./Book");
 
 class Author extends Model {}
 
@@ -30,5 +31,13 @@ Author.init(
 		timestamps: false,
 	}
 );
+
+Author.hasMany(Book, {
+	foreignKey: "au_id",
+});
+
+Book.belongsTo(Author, {
+	foreignKey: "au_id",
+});
 
 module.exports = Author;

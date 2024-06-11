@@ -1,9 +1,9 @@
-const AuthorService = require("../services/AuthorService");
+const AuthorServices = require("../services/AuthorServices");
 
 class AuthorController {
-	async getAllAuthor(request, response) {
+	async getAllAuthors(request, response) {
 		try {
-			const authors = await AuthorService.getAllAuthors(request, response);
+			const authors = await AuthorServices.getAllAuthors(request, response);
 			response.json({ message: "Retour de tous mes auteurs", authors });
 		} catch (error) {
 			response.status(500);

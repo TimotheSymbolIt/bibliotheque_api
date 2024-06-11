@@ -1,15 +1,14 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const cors = require("cors");
-const AuthorRoutes = require("./routes/AuthorRoutes");
-const BookRoutes = require("./routes/BookRoutes");
-const AuthRoutes = require("./routes/AuthRoutes");
+import cors from "cors";
+import AuthorRoutes from "./routes/AuthorRoutes.js";
+import AuthRoutes from "./routes/AuthRoutes.js";
+import BookRoutes from "./routes/BookRoutes.js";
 
 const port = 3005;
 
 var corsOptions = {
 	origin: "http://localhost:3000",
-	optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));

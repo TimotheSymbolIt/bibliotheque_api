@@ -1,9 +1,9 @@
-const express = require("express");
-const AuthorController = require("../controllers/AuthorController");
-const router = express.Router();
+import { Router } from "express";
+import AuthorController from "../controllers/AuthorController.js";
+const router = Router();
 
 router.get("/", (request, response) =>
 	AuthorController.getAllAuthors(request, response)
 );
 
-module.exports = router;
+export default router;

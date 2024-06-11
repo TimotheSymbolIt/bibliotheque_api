@@ -1,6 +1,6 @@
-const express = require("express");
-const BookController = require("../controllers/BookController");
-const router = express.Router();
+import { Router } from "express";
+import BookController from "../controllers/BookController.js";
+const router = Router();
 
 router.get("/", (request, response) =>
 	BookController.getAllBooks(request, response)
@@ -14,8 +14,8 @@ router.patch("/return-book/:id", (request, response) =>
 	BookController.returnABook(request, response)
 );
 
-router.post("/", (request, response, next) => {
-	BookController.addBook(request, response, next);
+router.post("/", (request, response) => {
+	BookController.addBook(request, response);
 });
 
-module.exports = router;
+export default router;

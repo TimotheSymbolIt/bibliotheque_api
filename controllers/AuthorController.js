@@ -1,10 +1,10 @@
-const AuthorServices = require("../services/AuthorServices");
+import AuthorServices from "../services/AuthorServices.js";
 
 class AuthorController {
 	async getAllAuthors(request, response) {
 		try {
-			const authors = await AuthorServices.getAllAuthors(request, response);
-			response.json({ message: "Retour de tous mes auteurs", authors });
+			const authors = await AuthorServices.getAllAuthors();
+			response.json(authors);
 		} catch (error) {
 			response.status(500);
 			response.json({
@@ -14,4 +14,4 @@ class AuthorController {
 	}
 }
 
-module.exports = new AuthorController();
+export default new AuthorController();

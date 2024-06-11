@@ -1,9 +1,13 @@
-const Author = require("../models/Author");
+import Author from "../models/Author.js";
 
 class AuthorService {
-	async getAllAuthors(request, response) {
-		return await Author.findAll();
+	async getAllAuthors() {
+		try {
+			return await Author.findAll();
+		} catch (error) {
+			console.log(error);
+		}
 	}
 }
 
-module.exports = new AuthorService();
+export default new AuthorService();

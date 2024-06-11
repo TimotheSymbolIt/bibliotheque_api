@@ -1,10 +1,10 @@
-const BookServices = require("../services/BookServices");
+import BookServices from "../services/BookServices.js";
 
 class BookController {
 	async getAllBooks(request, response) {
 		try {
 			const books = await BookServices.getAllBooks();
-			response.json({ message: "Retour de tous mes livres", books });
+			response.json(books);
 		} catch (error) {
 			response.status(500);
 			response.json({
@@ -15,7 +15,7 @@ class BookController {
 
 	async borrowABook(request, response) {
 		try {
-			await BookServices.borrowABook(request, response);
+			await BookServices.borrowABook(request);
 			response.json({ message: "Livre emprunté !" });
 		} catch (error) {
 			response.status(500);
@@ -27,7 +27,7 @@ class BookController {
 
 	async returnABook(request, response) {
 		try {
-			const book = await BookServices.returnABook(request, response);
+			const book = await BookServices.returnABook(request);
 			response.json({ message: "Livre retourné !", book });
 		} catch (error) {
 			response.status(500);
@@ -36,11 +36,11 @@ class BookController {
 			});
 		}
 	}
-	async addBook(request, response, next) {
+	async addBook(request, response) {
 		try {
-			console.log(request.body);
-			const book = await BookServices.addBook(request, response, next);
-			response.json({ message: "Livre ajouté !" });
+			// console.log(request.body);
+			const book = await BookServices.addBook(request);
+			response.json({ message: "Livre ajouté !", book });
 		} catch (error) {
 			response.status(500);
 			response.json({
@@ -50,4 +50,4 @@ class BookController {
 	}
 }
 
-module.exports = new BookController();
+export default new BookController();

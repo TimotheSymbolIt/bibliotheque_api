@@ -1,6 +1,6 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/Sequelize");
-const Book = require("./Book");
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/Sequelize.js";
+import Book from "./Book.js";
 
 class Author extends Model {}
 
@@ -40,4 +40,4 @@ Book.belongsTo(Author, {
 	foreignKey: "au_id",
 });
 
-module.exports = Author;
+export default Author;
